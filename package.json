@@ -5,7 +5,24 @@
   "repository": "https://github.com/olmer88/ir1.git",
   "author": "zhuk.maxim.a@gmail.com",
   "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "test-watch": "jest --watch src",
+    "make-terms": "node bin/makeTerms.js",
+    "make-incidence-matrix": "node bin/makeMatrix.js",
+    "make-inverted-index": "node bin/makeInvertedIndex",
+    "search-matrix": "node search accessory",
+    "search-invert": "node search2 accessory"
+  },
   "dependencies": {
-    "lodash": "^4.17.15"
+    "jest": "^25.1.0",
+    "json-beautify": "1.1.1",
+    "lodash": "4.17.15",
+    "natural": "0.6.3"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1"
   }
 }
