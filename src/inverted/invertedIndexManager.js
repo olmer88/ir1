@@ -9,8 +9,12 @@ const operatorToQueryProcessorMap = {
   NOT: (fileIds1, fileIds2) => fileIds1.filter((id) => !fileIds2.includes(id)),
 };
 
+const getFileIds = (words) => {
+  const term = words.split(' ').map(stem).join(' ');
+  return invertedIndex[term] || [];
+};
+
 function search(word1, operator = 'ONE_WORD', word2 = '') {
-  const getFileIds = (word) => invertedIndex[stem(word)];
   const processQuery = operatorToQueryProcessorMap[_.toUpper(operator)];
   const fileIds = processQuery(getFileIds(word1), getFileIds(word2));
   return getFileNames(fileIds);

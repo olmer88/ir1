@@ -3,12 +3,14 @@ const path = require('path');
 const fs = require('fs');
 const { PorterStemmer } = require('natural');
 
+const stopWords = ['the'];
+
 function tokenize(text) {
   return text
     .replace(/[^a-zA-Z ]/g, ' ')
     .replace(/ +/g, ' ')
     .split(' ')
-    .filter((term) => term.length > 2);
+    .filter((term) => term.length > 2 && !stopWords.includes(_.toLower(term)));
 }
 
 const { stem } = PorterStemmer;
@@ -28,7 +30,7 @@ const flattenTerms = (termsArrays) => _
 const getFileNames = (ids) => {
   const fileNames = fs.readdirSync('files');
   if (!ids) return fileNames;
-  return fileNames.filter((name, id) => ids.includes(id));
+  return fileNames.filter((name, id) => ids.map(Number).includes(id));
 };
 module.exports = {
   getFileNames,

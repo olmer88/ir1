@@ -6,13 +6,14 @@
   "author": "zhuk.maxim.a@gmail.com",
   "license": "MIT",
   "scripts": {
-    "test": "jest",
+    "test": "jest --verbose",
     "test-watch": "jest --watch src",
     "make-terms": "node bin/makeTerms.js",
     "make-incidence-matrix": "node bin/makeMatrix.js",
-    "make-inverted-index": "node bin/makeInvertedIndex",
-    "search-matrix": "node search accessory",
-    "search-invert": "node search2 accessory"
+    "make-inverted-index": "node bin/makeInvertedIndex.js",
+    "make-coordinate-index": "node bin/makeCoordinateIndex.js",
+    "search-matrix": "node bin/makeMatrix.js",
+    "search-invert": "node bin/searchInverted.js"
   },
   "dependencies": {
     "jest": "^25.1.0",
